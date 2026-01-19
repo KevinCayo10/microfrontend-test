@@ -48,4 +48,35 @@ export class MenusComponent {
   openCreate() {
     this.openCreateModal();
   }
+
+  openEdit(menu: Menu) {
+    const modalRef = this.modalService.open(ModalComponent, {
+      centered: true,
+      size: 'lg',
+    });
+
+    // Pass menu to modal
+    (modalRef.componentInstance as ModalComponent).menu = menu as any;
+
+    modalRef.result.then((data) => {
+      if (!data) return;
+
+      if (menu.id == null) {
+        console.error('Menu id is missing, cannot update');
+        return;
+      }
+
+      this.menusSvc.updateMenu(menu.id, data).subscribe(() => this.getMenus());
+    });
+  }
+
+  confirmDelete(menu: Menu) {
+    const confirmed = window.confirm(`¿Eliminar el menú "${menu.name}"?`);
+    if (!confirmed) return;
+
+    this.menusSvc.deleteMenu(menu.id).subscribe(
+      () => this.getMenus(),
+      (err) => console.error('Error deleting menu:', err),
+    );
+  }
 }

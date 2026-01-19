@@ -11,8 +11,7 @@
     </thead>
 
     <tbody>
-      @for (menu of data; track menu.id; let i = $index) {
-      <tr>
+      <tr *ngFor="let menu of data; let i = index; trackBy: trackById">
         <td class="fw-semibold">{{ i + 1 }}</td>
 
         <td>
@@ -31,17 +30,15 @@
 
         <!-- Acciones -->
         <td class="text-center">
-          <button class="btn btn-sm btn-outline-primary me-1" title="Editar">
+          <button class="btn btn-sm btn-outline-primary me-1" title="Editar" (click)="edit.emit(menu)">
             <i class="bi bi-pencil"></i>
           </button>
 
-          <!-- <button class="btn btn-sm" [ngClass]="menu.status ? 'btn-outline-danger' : 'btn-outline-success'"
-            title="Cambiar estado" (click)="toggle.emit(menu)">
-            <i class="bi" [ngClass]="menu.status ? 'bi-eye-slash' : 'bi-eye'"></i>
-          </button> -->
+          <button class="btn btn-sm btn-outline-danger" title="Eliminar" (click)="delete.emit(menu)">
+            <i class="bi bi-trash"></i>
+          </button>
         </td>
       </tr>
-      }
     </tbody>
   </table>
 </div>

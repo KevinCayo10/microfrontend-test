@@ -25,7 +25,7 @@ export class MenusService {
   }
 
   updateMenu(id: number, menu: Menu): Observable<Response<Menu>> {
-    return this.http.put<Response<Menu>>(`${this.apiUrl}/${id}`, menu);
+    return this.http.patch<Response<Menu>>(`${this.apiUrl}/${id}`, menu);
   }
 
   deleteMenu(id: number): Observable<Response<void>> {
