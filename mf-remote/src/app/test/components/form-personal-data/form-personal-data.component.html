@@ -1,0 +1,50 @@
+<div [formGroup]="personalData">
+  <div class="row g-3 mb-4 border-bottom pb-4">
+    <h3 class="text-primary">📝 Datos Personales</h3>
+
+    <div class="col-md-4">
+      <app-shared-input
+        [control]="getControl('name')"
+        label="Nombre"
+        placeholder="Juan"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <app-shared-input
+        [control]="getControl('lastName')"
+        label="Apellido"
+        placeholder="Alvarez"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <app-shared-input
+        [control]="getControl('email')"
+        label="Correo electrónico"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <app-shared-input [control]="getControl('phone')" label="telefono" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="nacionalidad" class="form-label">Nacionalidad</label>
+      <ng-select
+        [items]="nationality"
+        bindLabel="name"
+        bindValue="id"
+        [formControl]="getControl('nationality')"
+      >
+      </ng-select>
+    </div>
+
+    <div class="col-md-4">
+      <app-shared-input
+        [control]="getControl('passengers')"
+        label="N° de pasajeros"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<section class="container py-5">
+  <h1 class="text-center mb-4">✈️ Reserva tu Aventura</h1>
+
+  <form [formGroup]="form" class="row w-100 bg-white p-4 rounded-3 shadow-lg">
+    <!-- Sección Información Personal -->
+    <app-form-personal-data [formParent]="form" />
+
+    <!-- Sección Detalles del Viaje -->
+    <app-form-location [formParent]="form"></app-form-location>
+
+    <!-- Sección Preferencias -->
+    <app-form-prefer />
+    <!-- Sección Pago -->
+    <app-form-payment-info [formParent]="form"></app-form-payment-info>
+
+    <!-- Términos y submit -->
+    <div class="form-check mb-4">
+      <input class="form-check-input" type="checkbox" id="terminos" required />
+      <label class="form-check-label" for="terminos"
+        >Acepto los términos y condiciones del servicio</label
+      >
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="button" class="btn btn-success btn-lg" (click)="onSubmit()">
+        Confirmar Reserva 🛫
+      </button>
+    </div>
+  </form>
+</section>

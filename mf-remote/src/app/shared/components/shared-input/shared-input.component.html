@@ -1,0 +1,20 @@
+<label [for]="label()" class="form-label">{{ label() }}</label>
+<input
+  required
+  type="text"
+  [id]="label()"
+  class="form-control"
+  [class.is-valid]="control().valid"
+  [class.is-invalid]="control().invalid && control().touched"
+  [formControl]="control()"
+  [placeholder]="placeholder()"
+  (change)="onEventSignal('$event')"
+/>
+@if(control().invalid && control().touched){
+<div class="invalid-feedback">
+  @switch (true) { @case(control().errors?.['required']){ El campo es requerido
+  } @case(control().errors?.['email']){ El formato de correo es invalido }
+  @case(!!control().errors?.['max']){ El valor máximo es
+  {{ control().errors?.['max'].max }} } }
+</div>
+}

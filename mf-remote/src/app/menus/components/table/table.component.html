@@ -1,0 +1,47 @@
+<div class="table-responsive">
+  <table class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th style="width: 50px">#</th>
+        <th>Nombre</th>
+        <th>Ruta</th>
+        <th>Estado</th>
+        <th class="text-center" style="width: 120px">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (menu of data; track menu.id; let i = $index) {
+      <tr>
+        <td class="fw-semibold">{{ i + 1 }}</td>
+
+        <td>
+          <span class="fw-medium">{{ menu.name }}</span>
+        </td>
+
+        <td>
+          <code>{{ menu.path }}</code>
+        </td>
+
+        <td>
+          <span class="badge" [ngClass]="menu.status ? 'bg-success' : 'bg-secondary'">
+            {{ menu.status ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+
+        <!-- Acciones -->
+        <td class="text-center">
+          <button class="btn btn-sm btn-outline-primary me-1" title="Editar">
+            <i class="bi bi-pencil"></i>
+          </button>
+
+          <!-- <button class="btn btn-sm" [ngClass]="menu.status ? 'btn-outline-danger' : 'btn-outline-success'"
+            title="Cambiar estado" (click)="toggle.emit(menu)">
+            <i class="bi" [ngClass]="menu.status ? 'bi-eye-slash' : 'bi-eye'"></i>
+          </button> -->
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

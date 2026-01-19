@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0">Menús</h4>
+
+  <button class="btn btn-primary" (click)="openCreate()">
+    <i class="bi bi-plus-lg me-1"></i>
+    Crear menú
+  </button>
+</div>
+
+<app-table [data]="menus"></app-table>

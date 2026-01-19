@@ -1,0 +1,44 @@
+<div [formGroup]="formParent()" >
+  <div formGroupName="location" class="row g-3 mb-4 border-bottom pb-4">
+
+    <h3 class="text-primary">🌍 Destino</h3>
+  
+
+  <div class="col-md-6">
+    <label for="origen" class="form-label">Ciudad de origen</label>
+    <input formControlName="origin" type="text" class="form-control" id="origen" list="ciudades" />
+    <datalist id="ciudades">
+      <option>Madrid</option>
+      <option>Barcelona</option>
+      <option>Ciudad de México</option>
+      <option>Buenos Aires</option>
+      <option>Bogotá</option>
+    </datalist>
+  </div>
+
+  <div class="col-md-6">
+    <label for="destino" class="form-label">Ciudad de destino</label>
+    <input type="text" class="form-control" id="destino" list="ciudades" />
+  </div>
+
+  <div class="col-md-4">
+    <label for="fechaSalida" class="form-label">Fecha de salida</label>
+    <input formControlName="date" type="date" class="form-control" id="fechaSalida" />
+  </div>
+
+  <div class="col-md-4">
+    <label for="fechaRegreso" class="form-label">Fecha de regreso</label>
+    <input type="date" class="form-control" id="fechaRegreso" />
+  </div>
+
+  <div class="col-md-4">
+    <label for="clase" class="form-label">Clase de vuelo</label>
+    <select class="form-select" id="clase">
+      <option>Económica</option>
+      <option>Premium Economy</option>
+      <option>Business</option>
+      <option>Primera Clase</option>
+    </select>
+  </div>
+</div>
+</div>
