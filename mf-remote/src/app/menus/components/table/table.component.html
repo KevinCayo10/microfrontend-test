@@ -2,10 +2,12 @@
   <table class="table table-hover align-middle">
     <thead class="table-light">
       <tr>
-        <th style="width: 50px">#</th>
-        <th>Nombre</th>
-        <th>Ruta</th>
-        <th>Estado</th>
+        <th style="width: 40px">#</th>
+        <th>Remote Entry</th>
+        <th>Exposed Module</th>
+        <th>Display Name</th>
+        <th>Route Path</th>
+        <th>NgModule</th>
         <th class="text-center" style="width: 120px">Acciones</th>
       </tr>
     </thead>
@@ -13,6 +15,15 @@
     <tbody>
       <tr *ngFor="let menu of data; let i = index; trackBy: trackById">
         <td class="fw-semibold">{{ i + 1 }}</td>
+
+        <td>
+          <a [href]="menu.remoteEntry" target="_blank" rel="noopener" class="text-truncate d-inline-block"
+            style="max-width: 240px;">{{ menu.remoteEntry }}</a>
+        </td>
+
+        <td>
+          <code class="text-break">{{ menu.exposedModule }}</code>
+        </td>
 
         <td>
           <span class="fw-medium">{{ menu.displayName }}</span>
@@ -23,8 +34,7 @@
         </td>
 
         <td>
-          <a [href]="menu.remoteEntry" target="_blank" rel="noopener" class="text-truncate d-inline-block"
-            style="max-width: 240px;">{{ menu.remoteEntry }}</a>
+          <span class="text-muted small">{{ menu.ngModuleName }}</span>
         </td>
 
         <!-- Acciones -->
