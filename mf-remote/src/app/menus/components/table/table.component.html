@@ -15,17 +15,16 @@
         <td class="fw-semibold">{{ i + 1 }}</td>
 
         <td>
-          <span class="fw-medium">{{ menu.name }}</span>
+          <span class="fw-medium">{{ menu.displayName }}</span>
         </td>
 
         <td>
-          <code>{{ menu.path }}</code>
+          <code>{{ menu.routePath }}</code>
         </td>
 
         <td>
-          <span class="badge" [ngClass]="menu.status ? 'bg-success' : 'bg-secondary'">
-            {{ menu.status ? 'Activo' : 'Inactivo' }}
-          </span>
+          <a [href]="menu.remoteEntry" target="_blank" rel="noopener" class="text-truncate d-inline-block"
+            style="max-width: 240px;">{{ menu.remoteEntry }}</a>
         </td>
 
         <!-- Acciones -->

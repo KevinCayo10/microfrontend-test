@@ -36,7 +36,7 @@ app.get("/manifest", (req: Request, res: Response<ApiResponse>) => {
     //   routePath: "remote",
     //   ngModuleName: "TestModule",
     // },
-    "menus": {
+    menus: {
       remoteEntry: "http://localhost:4201/remoteEntry.js",
       exposedModule: "./MenusModule",
       displayName: "Módulo de Menús",

@@ -9,6 +9,7 @@ import { FormComponent } from './components/form/form.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastsComponent } from '../shared/components/toasts/toasts.component';
 
 @NgModule({
   declarations: [MenusComponent],
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TableComponent,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ToastsComponent,
+    ReactiveFormsModule,
   ],
   exports: [],
 })

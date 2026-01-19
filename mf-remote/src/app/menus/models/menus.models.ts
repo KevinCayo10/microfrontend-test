@@ -1,6 +1,8 @@
 export interface Menu {
   id: number;
-  name: string;
-  path: string;
-  status: boolean;
+  remoteEntry: string;
+  exposedModule: string;
+  displayName: string;
+  routePath: string;
+  ngModuleName: string;
 }

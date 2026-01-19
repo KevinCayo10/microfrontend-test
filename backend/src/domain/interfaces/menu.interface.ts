@@ -1,7 +1,9 @@
 import { BasesI } from "./shared.interface";
 
 export interface MenuI extends BasesI {
-  name: string;
-  path: string;
-  status: boolean;
+  remoteEntry: string;
+  exposedModule: string;
+  displayName: string;
+  routePath: string;
+  ngModuleName: string;
 }

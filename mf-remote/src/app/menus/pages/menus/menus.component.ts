@@ -5,6 +5,7 @@ import { Menu } from '../../models/menus.models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-menus',
@@ -15,6 +16,7 @@ export class MenusComponent {
   private readonly menusSvc: MenusService = inject(MenusService);
   private readonly fb: FormBuilder = inject(FormBuilder);
   private readonly modalService = inject(NgbModal);
+  private readonly toastSvc = inject(ToastService);
   menus: Menu[] = [];
   constructor() {
     this.getMenus();
@@ -28,6 +30,7 @@ export class MenusComponent {
       },
       (error) => {
         console.error('Error fetching menus:', error);
+        this.toastSvc.error('No se pudo obtener la lista de menús.');
       },
     );
   }
@@ -41,7 +44,16 @@ export class MenusComponent {
     modalRef.result.then((data) => {
       if (!data) return;
 
-      this.menusSvc.createMenu(data).subscribe(() => this.getMenus());
+      this.menusSvc.createMenu(data).subscribe(
+        () => {
+          this.getMenus();
+          this.toastSvc.success('Menú creado correctamente');
+        },
+        (err) => {
+          console.error('Create menu error', err);
+          this.toastSvc.error('Error al crear el menú');
+        },
+      );
     });
   }
 
@@ -66,17 +78,34 @@ export class MenusComponent {
         return;
       }
 
-      this.menusSvc.updateMenu(menu.id, data).subscribe(() => this.getMenus());
+      this.menusSvc.updateMenu(menu.id, data).subscribe(
+        () => {
+          this.getMenus();
+          this.toastSvc.success('Menú actualizado correctamente');
+        },
+        (err) => {
+          console.error('Update menu error', err);
+          this.toastSvc.error('Error al actualizar el menú');
+        },
+      );
     });
   }
 
   confirmDelete(menu: Menu) {
-    const confirmed = window.confirm(`¿Eliminar el menú "${menu.name}"?`);
+    const confirmed = window.confirm(
+      `¿Eliminar el menú "${menu.displayName}"?`,
+    );
     if (!confirmed) return;
 
     this.menusSvc.deleteMenu(menu.id).subscribe(
-      () => this.getMenus(),
-      (err) => console.error('Error deleting menu:', err),
+      () => {
+        this.getMenus();
+        this.toastSvc.success('Menú eliminado correctamente');
+      },
+      (err) => {
+        console.error('Error deleting menu:', err);
+        this.toastSvc.error('Error al eliminar el menú');
+      },
     );
   }
 }

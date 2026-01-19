@@ -1,21 +1,44 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
 
   <div class="mb-3">
-    <label class="form-label">Nombre</label>
-    <input class="form-control" formControlName="name">
+    <label class="form-label">Remote Entry (URL)</label>
+    <input class="form-control" formControlName="remoteEntry" [class.is-invalid]="showErrors('remoteEntry')" required>
+    <div *ngIf="showErrors('remoteEntry')" class="invalid-feedback d-block">
+      <div *ngIf="remoteEntry?.errors?.['required']">El remoteEntry es obligatorio.</div>
+    </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Ruta</label>
-    <input class="form-control" formControlName="path">
+    <label class="form-label">Exposed Module</label>
+    <input class="form-control" formControlName="exposedModule" [class.is-invalid]="showErrors('exposedModule')"
+      required>
+    <div *ngIf="showErrors('exposedModule')" class="invalid-feedback d-block">
+      <div *ngIf="exposedModule?.errors?.['required']">El exposedModule es obligatorio.</div>
+    </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Estado</label>
-    <select class="form-select" formControlName="status">
-      <option [ngValue]="true">Activo</option>
-      <option [ngValue]="false">Inactivo</option>
-    </select>
+    <label class="form-label">Display Name</label>
+    <input class="form-control" formControlName="displayName" [class.is-invalid]="showErrors('displayName')" required>
+    <div *ngIf="showErrors('displayName')" class="invalid-feedback d-block">
+      <div *ngIf="displayName?.errors?.['required']">El displayName es obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Route Path</label>
+    <input class="form-control" formControlName="routePath" [class.is-invalid]="showErrors('routePath')" required>
+    <div *ngIf="showErrors('routePath')" class="invalid-feedback d-block">
+      <div *ngIf="routePath?.errors?.['required']">El routePath es obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Ng Module Name</label>
+    <input class="form-control" formControlName="ngModuleName" [class.is-invalid]="showErrors('ngModuleName')" required>
+    <div *ngIf="showErrors('ngModuleName')" class="invalid-feedback d-block">
+      <div *ngIf="ngModuleName?.errors?.['required']">El ngModuleName es obligatorio.</div>
+    </div>
   </div>
 
   <div class="d-flex justify-content-end gap-2">
