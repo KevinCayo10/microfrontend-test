@@ -40,18 +40,26 @@ app.get("/manifest", async (req: Request, res: Response): Promise<void> => {
     const json = await resp.json();
     const menus = Array.isArray(json?.data) ? json.data : [];
 
-    const manifest: ApiResponse = {};
+    const manifest: ApiResponse = {
+      remote: {
+        remoteEntry: "http://localhost:4201/remoteEntry.js",
+        exposedModule: "./MenusModule",
+        displayName: "Menús",
+        routePath: "menus",
+        ngModuleName: "MenusModule",
+      },
+    };
 
-    for (const m of menus) {
-      const key = m.routePath || m.displayName || `menu_${m.id}`;
-      manifest[key] = {
-        remoteEntry: m.remoteEntry,
-        exposedModule: m.exposedModule,
-        displayName: m.displayName,
-        routePath: m.routePath,
-        ngModuleName: m.ngModuleName,
-      };
-    }
+    // for (const m of menus) {
+    //   const key = m.routePath || m.displayName || `menu_${m.id}`;
+    //   manifest[key] = {
+    //     remoteEntry: m.remoteEntry,
+    //     exposedModule: m.exposedModule,
+    //     displayName: m.displayName,
+    //     routePath: m.routePath,
+    //     ngModuleName: m.ngModuleName,
+    //   };
+    // }
 
     res.json(manifest);
     return;

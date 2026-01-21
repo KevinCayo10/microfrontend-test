@@ -5,6 +5,7 @@ import {
 } from '@angular-architects/module-federation';
 import { buildRoutes, CustomManifest } from './utils/config-routes';
 import { HomeComponent } from './pages/home/home.component';
+import { LayoutComponent } from './shared/component/layout/layout.component';
 
 const manifest = getManifest<CustomManifest>();
 
@@ -17,10 +18,16 @@ console.log({ routesParsed });
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    pathMatch: 'full',
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full',
+      },
+      ...routesParsed,
+    ],
   },
-  ...routesParsed,
 ];
 
 /**
