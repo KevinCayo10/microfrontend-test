@@ -1,36 +1,55 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="btn btn-outline-light d-lg-none me-2" type="button" (click)="toggleSidebar.emit()"
+      aria-label="Abrir menú">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <a class="navbar-brand fw-semibold" routerLink="/" (click)="closeMenus()">
+      Microfrontend
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="onToggleNav()" [attr.aria-expanded]="!isNavCollapsed"
+      aria-controls="navbarMain" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbarMain" class="navbar-collapse collapse" [class.show]="!isNavCollapsed">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenus()">
+            Inicio
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+
+      <form class="d-flex gap-2" role="search" (submit)="$event.preventDefault()">
+        <input class="form-control form-control-sm" type="search" placeholder="Buscar..." aria-label="Buscar" />
+        <button class="btn btn-outline-light btn-sm" type="submit">Buscar</button>
       </form>
+
+      <div class="dropdown ms-lg-3" [class.show]="isUserMenuOpen">
+        <button class="btn btn-light btn-sm dropdown-toggle" type="button" (click)="onToggleUserMenu()"
+          [attr.aria-expanded]="isUserMenuOpen">
+          Cuenta
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" [class.show]="isUserMenuOpen">
+          <li>
+            <a class="dropdown-item" href="#" (click)="$event.preventDefault(); closeMenus()">
+              Perfil
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" (click)="$event.preventDefault(); closeMenus()">
+              Salir
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

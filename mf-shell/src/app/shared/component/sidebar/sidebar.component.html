@@ -1,0 +1,22 @@
+<div class="sidebar p-3">
+  <div class="sidebar-header mb-3">
+    <div class="fw-semibold text-uppercase small text-secondary">Menú</div>
+  </div>
+
+  <ul class="nav nav-pills flex-column gap-1">
+    <li class="nav-item" *ngFor="let item of items; trackBy: trackByKey">
+      <a class="nav-link d-flex align-items-center gap-2" [routerLink]="'/' + item.routePath" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.routePath === '' }" (click)="navigate.emit()">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="text-truncate">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <hr class="my-3" />
+
+  <div class="small text-secondary">
+    <div class="fw-semibold">Entorno</div>
+    <div class="text-truncate">Shell</div>
+  </div>
+</div>

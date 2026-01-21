@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import {
   getManifest,
   loadRemoteModule,
 } from '@angular-architects/module-federation';
 import { buildRoutes, CustomManifest } from './utils/config-routes';
+import { HomeComponent } from './pages/home/home.component';
 
 const manifest = getManifest<CustomManifest>();
 
@@ -17,7 +17,8 @@ console.log({ routesParsed });
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: HomeComponent,
+    pathMatch: 'full',
   },
   ...routesParsed,
 ];

@@ -1,11 +1,15 @@
 <section class="layout-custom">
   <header>
-    <app-navbar></app-navbar>
+    <app-navbar (toggleSidebar)="toggleSidebar()"></app-navbar>
   </header>
   <div class="content">
-    <aside>
+    <div class="sidebar-backdrop d-lg-none" *ngIf="isSidebarOpen" (click)="closeSidebar()" aria-hidden="true"></div>
+
+    <aside [class.is-open]="isSidebarOpen">
+      <app-sidebar (navigate)="closeSidebar()"></app-sidebar>
     </aside>
-    <main>
+
+    <main class="p-3">
       <ng-content></ng-content>
     </main>
   </div>
