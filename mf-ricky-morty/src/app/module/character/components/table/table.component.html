@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th class="text-center" style="width: 120px">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items; let i = index; trackBy: trackById">
+
+        <td>
+          <span style="max-width: 240px;">{{ item.id }}</span>
+        </td>
+
+        <td>
+          <code class="text-break">{{ item.name }}</code>
+        </td>
+
+        <td>
+          <span class="fw-medium">{{ item.status }}</span>
+        </td>
+
+        <!-- Acciones -->
+        <td class="text-center">
+          <button class="btn btn-sm btn-outline-primary me-1" title="Visualizar" (click)="viewDetail(item)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5" />
+            </svg> </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

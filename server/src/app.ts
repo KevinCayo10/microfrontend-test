@@ -48,6 +48,13 @@ app.get("/manifest", async (req: Request, res: Response): Promise<void> => {
         routePath: "menus",
         ngModuleName: "MenusModule",
       },
+      ricky_morty: {
+        remoteEntry: "http://localhost:4203/remoteEntry.js",
+        exposedModule: "./CharacterModule",
+        displayName: "RickyMorty",
+        routePath: "character",
+        ngModuleName: "CharacterModule",
+      },
     };
 
     // for (const m of menus) {
