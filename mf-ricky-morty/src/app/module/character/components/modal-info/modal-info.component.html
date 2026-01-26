@@ -1,45 +1,9 @@
 <div class="modal-header">
-  <h5 class="modal-title">
-  </h5>
-  <button type="button" class="btn-close" (click)="onClose()"></button>
+  <h4 class="modal-title">{{ item?.name }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
 </div>
-
 <div class="modal-body">
-  <div class="modal fade" id="rickMortyModal" tabindex="-1" aria-labelledby="rickMortyLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content shadow">
-
-        <div class="modal-header bg-dark text-white">
-          <h5 class="modal-title" id="rickMortyLabel">
-            🧪 Rick & Morty API -  Personaje
-          </h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <div class="row g-3">
-
-            <div class="col-md-8">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <strong>Nombre:</strong> {{ item.name }}
-                </li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="modal-footer">
-         
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+  <p><strong>Status:</strong> {{ item.status }}</p>
+  <p><strong>Species:</strong> {{ item.species }}</p>
+  <p><strong>Origin:</strong> {{ item.origin?.name }}</p>
 </div>

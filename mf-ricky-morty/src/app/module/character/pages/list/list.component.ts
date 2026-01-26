@@ -9,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-list',
   templateUrl: './list.component.html',
   standalone: true,
-  imports: [TableComponent, ModalInfoComponent],
+  imports: [TableComponent],
 })
 export class ListComponent implements OnInit {
   public items: Result[] = [];
